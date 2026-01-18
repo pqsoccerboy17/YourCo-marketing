@@ -1,16 +1,67 @@
-# React + Vite
+# [YourCo] Consulting Website
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+AI GTM strategy consulting for PE-backed companies. We help turn AI tool sprawl into investor-ready adoption stories.
 
-Currently, two official plugins are available:
+## Tech Stack
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **Framework:** React 19 + Vite 7
+- **Styling:** Tailwind CSS 4
+- **Typography:** DM Sans (Google Fonts)
+- **Theme:** Light/Dark mode (system preference)
 
-## React Compiler
+## Development
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+```bash
+# Install dependencies
+npm install
 
-## Expanding the ESLint configuration
+# Start development server
+npm run dev
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+# Build for production
+npm run build
+
+# Preview production build
+npm run preview
+```
+
+## Scripts
+
+| Command | Description |
+|---------|-------------|
+| `npm run dev` | Start development server at localhost:5173 |
+| `npm run build` | Build for production |
+| `npm run preview` | Preview production build |
+| `npm run lint` | Run ESLint |
+| `npm run setup:notion` | Create Notion activity database |
+
+## Brand System
+
+Colors, typography, and component specifications are documented in [CLAUDE.md](CLAUDE.md).
+
+### Key Colors
+- **Terracotta:** `#C4765B` (primary accent)
+- **Text Primary:** `#2D2A26` (warm charcoal)
+- **Background:** `#FAF9F7` (warm white)
+
+### Typography
+- **H1:** 56px / 40px mobile
+- **H2:** 40px / 32px mobile
+- **H3:** 28px / 24px mobile
+
+## Project Structure
+
+```
+src/
+├── App.jsx          # Main application component
+├── index.css        # Global styles + brand system
+└── main.jsx         # React entry point
+scripts/
+└── setup-notion.js  # Notion database setup
+```
+
+## Related Resources
+
+- **Handoff Doc:** `CLAUDE_CODE_HANDOFF.md` in Downloads
+- **Notion Hub:** https://www.notion.so/2da9df26e0408119ad22ee878e8d9e0c
+- **GitHub:** https://github.com/pqsoccerboy17/YourCo
