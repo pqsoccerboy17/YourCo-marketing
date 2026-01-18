@@ -43,7 +43,7 @@ export default function App() {
         <div className="max-w-5xl mx-auto relative z-10">
           <div className="max-w-2xl">
             <p className="text-sm font-medium uppercase tracking-widest mb-4" style={{ color: 'var(--terracotta)' }}>AI GTM Strategy</p>
-            <h1 className="text-5xl font-bold leading-tight mb-6" style={{ letterSpacing: '-0.03em' }}>
+            <h1 className="text-h1 mb-6">
               Your board wants an AI story.{' '}
               <span style={{ color: 'var(--terracotta)' }}>Your team has 12 tools and no adoption metrics.</span>
             </h1>
@@ -67,7 +67,7 @@ export default function App() {
       <section className="py-24 px-6" style={{ backgroundColor: 'var(--bg-surface)' }}>
         <div className="max-w-5xl mx-auto">
           <p className="text-sm font-medium uppercase tracking-widest mb-4" style={{ color: 'var(--text-secondary)' }}>The Problem</p>
-          <h2 className="text-3xl font-semibold mb-8">The Adoption Paradox</h2>
+          <h2 className="text-h2 mb-8">The Adoption Paradox</h2>
           <div className="grid md:grid-cols-2 gap-12">
             <div>
               <p className="text-lg leading-relaxed mb-6" style={{ color: 'var(--text-secondary)' }}>
@@ -109,9 +109,11 @@ export default function App() {
         <DotPattern opacity={0.03} />
         <div className="max-w-5xl mx-auto relative z-10">
           <p className="text-sm font-medium uppercase tracking-widest mb-4" style={{ color: 'var(--text-secondary)' }}>What We Deliver</p>
-          <h2 className="text-3xl font-semibold mb-4">AI GTM Assessment</h2>
+          <h2 className="text-h2 mb-4">AI GTM Assessment</h2>
           <p className="text-lg mb-12 max-w-xl" style={{ color: 'var(--text-secondary)' }}>A 4-6 week engagement that audits, analyzes, and architects your AI adoption story.</p>
-          <div className="grid md:grid-cols-3 gap-8">
+
+          {/* Service Cards */}
+          <div className="grid md:grid-cols-3 gap-8 mb-16">
             {[
               {
                 title: 'Current State Audit',
@@ -145,27 +147,94 @@ export default function App() {
               </div>
             ))}
           </div>
+
+          {/* What's Included + Deliverables */}
+          <div className="grid md:grid-cols-2 gap-12">
+            {/* What's Included */}
+            <div>
+              <h3 className="text-h3 mb-6">What's Included</h3>
+              <div className="space-y-4">
+                {[
+                  { title: 'Stakeholder Discovery', desc: '8-12 interviews with sales, marketing, ops, leadership' },
+                  { title: 'Tech Stack Inventory', desc: 'Complete audit of every AI tool in use' },
+                  { title: 'Adoption Gap Analysis', desc: 'Who\'s using what, what\'s working, what\'s not' },
+                  { title: 'Opportunity Prioritization', desc: 'Ranked list of quick wins and strategic bets' },
+                  { title: 'Business Cases', desc: 'ROI projections for top 3-5 opportunities' },
+                  { title: 'Investor Narrative', desc: 'Board-ready talking points and presentation' }
+                ].map((item, i) => (
+                  <div key={i} className="flex gap-3">
+                    <div className="w-5 h-5 rounded-full flex-shrink-0 flex items-center justify-center mt-0.5" style={{ backgroundColor: 'var(--blush)' }}>
+                      <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="var(--terracotta)" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><path d="m9 12 2 2 4-4"/></svg>
+                    </div>
+                    <div>
+                      <span className="font-medium">{item.title}</span>
+                      <span style={{ color: 'var(--text-secondary)' }}> — {item.desc}</span>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Deliverables */}
+            <div>
+              <h3 className="text-h3 mb-6">Deliverables</h3>
+              <div className="card">
+                <ul className="space-y-3">
+                  {[
+                    'Stakeholder interview synthesis',
+                    'Tech stack inventory with adoption scores',
+                    'Gap analysis report',
+                    'Prioritized opportunity matrix',
+                    'Business cases (3-5)',
+                    'Implementation roadmap',
+                    'Board presentation deck',
+                    'Executive summary one-pager'
+                  ].map((item, i) => (
+                    <li key={i} className="flex gap-3 items-start">
+                      <span style={{ color: 'var(--terracotta)' }}>•</span>
+                      <span style={{ color: 'var(--text-secondary)' }}>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
-      {/* Process Timeline */}
+      {/* Process Timeline - 5 Phases */}
       <section className="py-24 px-6" style={{ backgroundColor: 'var(--bg-surface)' }}>
         <div className="max-w-5xl mx-auto">
           <p className="text-sm font-medium uppercase tracking-widest mb-4" style={{ color: 'var(--text-secondary)' }}>The Process</p>
-          <h2 className="text-3xl font-semibold mb-12">Clarity in 4-6 Weeks</h2>
-          <div className="grid md:grid-cols-4 gap-8">
+          <h2 className="text-h2 mb-12">Clarity in 4-6 Weeks</h2>
+
+          {/* Phase 0 - Pre-Kickoff */}
+          <div className="mb-8 p-6 rounded-xl" style={{ backgroundColor: 'var(--blush)', opacity: 0.7 }}>
+            <div className="flex items-center gap-4">
+              <div className="w-10 h-10 rounded-full flex items-center justify-center font-bold" style={{ backgroundColor: 'var(--terracotta)', color: 'white' }}>0</div>
+              <div>
+                <h3 className="font-semibold">Pre-Kickoff</h3>
+                <p className="text-sm" style={{ color: 'var(--text-secondary)' }}>Contract signed, payment received, logistics confirmed</p>
+              </div>
+            </div>
+          </div>
+
+          {/* Phases 1-5 */}
+          <div className="grid md:grid-cols-5 gap-6">
             {[
-              { week: 'Week 1-2', title: 'Discovery', desc: 'Stakeholder interviews, tool inventory, usage data collection' },
-              { week: 'Week 2-3', title: 'Analysis', desc: 'Adoption scoring, gap identification, opportunity mapping' },
-              { week: 'Week 3-4', title: 'Synthesis', desc: 'Quick wins prioritization, 90-day roadmap, ROI projections' },
-              { week: 'Week 4-6', title: 'Delivery', desc: 'Executive presentation, board materials, implementation guide' }
+              { phase: '1', week: 'Week 1', title: 'Kickoff', desc: '60-90 min meeting, stakeholder mapping, success criteria defined' },
+              { phase: '2', week: 'Weeks 1-3', title: 'Discovery', desc: '8-12 interviews, tech inventory, adoption scoring' },
+              { phase: '3', week: 'Weeks 3-4', title: 'Analysis', desc: 'Gap analysis, opportunity prioritization, quick wins' },
+              { phase: '4', week: 'Weeks 4-5', title: 'Recommendations', desc: 'Business cases, investor narrative, roadmap' },
+              { phase: '5', week: 'Weeks 5-6', title: 'Delivery', desc: 'Final presentation, documentation handoff' }
             ].map((phase, i) => (
               <div key={i} className="relative">
-                <div className="text-sm font-medium mb-2" style={{ color: 'var(--terracotta)' }}>{phase.week}</div>
+                <div className="w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold mb-3" style={{ backgroundColor: 'var(--terracotta)', color: 'white' }}>{phase.phase}</div>
+                <div className="text-xs font-medium uppercase tracking-wide mb-1" style={{ color: 'var(--terracotta)' }}>{phase.week}</div>
                 <h3 className="font-semibold mb-2">{phase.title}</h3>
                 <p className="text-sm" style={{ color: 'var(--text-secondary)' }}>{phase.desc}</p>
-                {i < 3 && (
-                  <div className="hidden md:block absolute top-3 -right-4 w-8 text-center" style={{ color: 'var(--sand)' }}>→</div>
+                {i < 4 && (
+                  <div className="hidden md:block absolute top-4 -right-3 w-6 text-center text-xs" style={{ color: 'var(--sand)' }}>→</div>
                 )}
               </div>
             ))}
@@ -209,12 +278,58 @@ export default function App() {
         </div>
       </section>
 
+      {/* Why [YourCo] - Competitive Positioning */}
+      <section className="py-24 px-6" style={{ backgroundColor: 'var(--bg-surface)' }}>
+        <div className="max-w-5xl mx-auto">
+          <p className="text-sm font-medium uppercase tracking-widest mb-4" style={{ color: 'var(--text-secondary)' }}>Why Us</p>
+          <h2 className="text-h2 mb-4">Not your typical consultants.</h2>
+          <p className="text-lg mb-12 max-w-xl" style={{ color: 'var(--text-secondary)' }}>We're built for speed, focused on adoption, and priced for results.</p>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {[
+              {
+                vs: 'vs Big 4',
+                them: '6-month, $500K+ transformation projects',
+                us: '4-6 weeks, practical, execution-focused'
+              },
+              {
+                vs: 'vs Tool Vendors',
+                them: 'Push their product regardless of fit',
+                us: 'Tool-agnostic, adoption-focused'
+              },
+              {
+                vs: 'vs Freelancers',
+                them: 'Inconsistent approach and delivery',
+                us: 'Repeatable methodology, proven framework'
+              },
+              {
+                vs: 'vs Internal Teams',
+                them: 'Too busy, too close to the problem',
+                us: 'Fresh eyes, dedicated focus, objective view'
+              }
+            ].map((item, i) => (
+              <div key={i} className="card">
+                <div className="text-xs font-bold uppercase tracking-wide mb-4" style={{ color: 'var(--terracotta)' }}>{item.vs}</div>
+                <div className="mb-4">
+                  <p className="text-sm mb-1 font-medium" style={{ color: 'var(--text-secondary)' }}>They do:</p>
+                  <p className="text-sm" style={{ color: 'var(--text-secondary)', opacity: 0.7 }}>{item.them}</p>
+                </div>
+                <div>
+                  <p className="text-sm mb-1 font-medium">We do:</p>
+                  <p className="text-sm" style={{ color: 'var(--text-secondary)' }}>{item.us}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* About Section */}
-      <section id="about" className="py-24 px-6" style={{ backgroundColor: 'var(--bg-surface)' }}>
+      <section id="about" className="py-24 px-6">
         <div className="max-w-5xl mx-auto">
           <div className="max-w-2xl">
             <p className="text-sm font-medium uppercase tracking-widest mb-4" style={{ color: 'var(--text-secondary)' }}>About</p>
-            <h2 className="text-3xl font-semibold mb-8">Quick wins over transformation theater.</h2>
+            <h2 className="text-h2 mb-8">Quick wins over transformation theater.</h2>
             <p className="leading-relaxed mb-6" style={{ color: 'var(--text-secondary)' }}>
               [YourCo] Consulting was founded on a simple observation: PE-backed companies don't need another AI roadmap that takes 18 months to execute. They need clarity they can act on before their next board meeting.
             </p>
@@ -228,13 +343,48 @@ export default function App() {
         </div>
       </section>
 
+      {/* FAQ Section */}
+      <section className="py-24 px-6 relative overflow-hidden">
+        <DotPattern opacity={0.03} />
+        <div className="max-w-5xl mx-auto relative z-10">
+          <p className="text-sm font-medium uppercase tracking-widest mb-4" style={{ color: 'var(--text-secondary)' }}>Common Questions</p>
+          <h2 className="text-h2 mb-12">You might be wondering...</h2>
+
+          <div className="grid md:grid-cols-2 gap-8">
+            {[
+              {
+                q: "Can't we do this internally?",
+                a: "You could, but your team is busy hitting quota. This takes 40-60 hours of focused work. Do you have that bandwidth in the next 6 weeks?"
+              },
+              {
+                q: "We're not ready yet.",
+                a: "What would make you ready? If it's a board meeting in 3 months, that's exactly when companies call us."
+              },
+              {
+                q: "It seems expensive.",
+                a: "A single unused tool license often costs $50K+/year. We typically find 2-3 of those. The assessment pays for itself."
+              },
+              {
+                q: "What's the ROI?",
+                a: "Clients typically identify $100-300K in optimization opportunities. Beyond cost savings, you get the board narrative that unlocks future investment."
+              }
+            ].map((item, i) => (
+              <div key={i} className="card">
+                <h3 className="font-semibold mb-3" style={{ color: 'var(--terracotta)' }}>"{item.q}"</h3>
+                <p style={{ color: 'var(--text-secondary)' }}>{item.a}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Contact Section */}
       <section id="contact" className="py-24 px-6" style={{ backgroundColor: 'var(--text-primary)', color: 'var(--bg-page)' }}>
         <div className="max-w-5xl mx-auto">
           <div className="grid md:grid-cols-2 gap-16">
             <div>
               <p className="text-sm font-medium uppercase tracking-widest mb-4" style={{ color: 'var(--text-secondary)' }}>Get in Touch</p>
-              <h2 className="text-3xl font-semibold mb-6">Ready to build your AI story?</h2>
+              <h2 className="text-h2 mb-6">Ready to build your AI story?</h2>
               <p className="leading-relaxed" style={{ color: 'var(--text-secondary)' }}>
                 Whether you have a board meeting in 60 days or you're just trying to make sense of your AI investments — let's talk.
               </p>
