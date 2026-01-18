@@ -1,1 +1,213 @@
+/* DM Sans Font - must be before tailwindcss import */
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap');
+
 @import "tailwindcss";
+
+/* ============================================
+   BRAND DESIGN SYSTEM - [YourCo] Consulting
+   Style: Warm Minimalism
+   ============================================ */
+
+/* Light Mode (Default) */
+:root {
+  /* Text Colors */
+  --text-primary: #2D2A26;
+  --text-secondary: #6B6560;
+
+  /* Background Colors */
+  --bg-page: #FAF9F7;
+  --bg-surface: #FFFFFF;
+
+  /* Accent Colors */
+  --terracotta: #C4765B;
+  --terracotta-dark: #A86249;
+  --sage: #8B9E8B;
+  --dusty-blue: #7C8FA6;
+  --sand: #E8E4DE;
+  --blush: #E8D5CF;
+
+  /* Typography */
+  --font-main: 'DM Sans', system-ui, -apple-system, sans-serif;
+}
+
+/* Dark Mode - System Preference */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --text-primary: #F5F3F0;
+    --text-secondary: #A8A29E;
+    --bg-page: #1C1917;
+    --bg-surface: #292524;
+    --sand: #3D3836;
+    --blush: #44322E;
+
+    /* Brighter terracotta for dark mode contrast */
+    --terracotta: #D4876B;
+    --terracotta-dark: #C4765B;
+  }
+}
+
+/* ============================================
+   BASE STYLES
+   ============================================ */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-main);
+  background-color: var(--bg-page);
+  color: var(--text-primary);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ============================================
+   TYPOGRAPHY
+   ============================================ */
+
+h1, h2, h3, h4, h5, h6 {
+  color: var(--text-primary);
+}
+
+/* ============================================
+   UTILITY CLASSES
+   ============================================ */
+
+.text-primary {
+  color: var(--text-primary);
+}
+
+.text-secondary {
+  color: var(--text-secondary);
+}
+
+.bg-page {
+  background-color: var(--bg-page);
+}
+
+.bg-surface {
+  background-color: var(--bg-surface);
+}
+
+.text-terracotta {
+  color: var(--terracotta);
+}
+
+.bg-terracotta {
+  background-color: var(--terracotta);
+}
+
+.border-sand {
+  border-color: var(--sand);
+}
+
+.bg-blush {
+  background-color: var(--blush);
+}
+
+/* ============================================
+   COMPONENT STYLES
+   ============================================ */
+
+/* Primary Button */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: var(--terracotta);
+  color: white;
+  padding: 1rem 1.75rem;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1rem;
+  transition: all 0.2s ease;
+  border: none;
+  cursor: pointer;
+}
+
+.btn-primary:hover {
+  background-color: var(--terracotta-dark);
+  transform: translateY(-1px);
+}
+
+/* Card */
+.card {
+  background-color: var(--bg-surface);
+  border: 1px solid var(--sand);
+  border-radius: 12px;
+  padding: 2rem;
+  transition: all 0.2s ease;
+}
+
+.card:hover {
+  box-shadow: 0 4px 12px rgba(45, 42, 38, 0.08);
+}
+
+@media (prefers-color-scheme: dark) {
+  .card:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  }
+}
+
+/* Links */
+a {
+  color: var(--terracotta);
+  transition: color 0.2s ease;
+}
+
+a:hover {
+  color: var(--terracotta-dark);
+}
+
+/* Focus States */
+:focus-visible {
+  outline: 2px solid var(--terracotta);
+  outline-offset: 2px;
+}
+
+/* Selection */
+::selection {
+  background-color: var(--blush);
+  color: var(--text-primary);
+}
+
+/* Scrollbar (webkit browsers) */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-page);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--sand);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--text-secondary);
+}
+
+/* ============================================
+   FORM INPUTS (for contact form)
+   ============================================ */
+
+input, textarea {
+  font-family: var(--font-main);
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: var(--text-secondary);
+  opacity: 0.7;
+}
