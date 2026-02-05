@@ -15,6 +15,7 @@ const DotPattern = ({ opacity = 0.07, className = "" }) => (
 export default function App() {
   const [formData, setFormData] = useState({ name: '', email: '', message: '' });
   const [submitted, setSubmitted] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const handleSubmit = () => {
     if (formData.name && formData.email) {
@@ -22,19 +23,74 @@ export default function App() {
     }
   };
 
+  const navLinks = [
+    { href: '#services', label: 'Services' },
+    { href: '#case-study', label: 'Case Study' },
+    { href: '#about', label: 'About' },
+    { href: '#contact', label: 'Contact' },
+  ];
+
   return (
     <div className="min-h-screen" style={{ backgroundColor: 'var(--bg-page)', color: 'var(--text-primary)', fontFamily: 'var(--font-main)' }}>
       {/* Navigation */}
       <nav className="fixed top-0 w-full z-50 backdrop-blur-sm" style={{ backgroundColor: 'var(--bg-page)', borderBottom: '1px solid var(--sand)' }}>
         <div className="max-w-5xl mx-auto px-6 py-4 flex justify-between items-center">
           <span className="text-xl font-semibold tracking-tight">[YourCo]</span>
-          <div className="flex gap-8 text-sm" style={{ color: 'var(--text-secondary)' }}>
-            <a href="#services" className="hover:opacity-80 transition-opacity" style={{ color: 'var(--text-secondary)', textDecoration: 'none' }}>Services</a>
-            <a href="#case-study" className="hover:opacity-80 transition-opacity" style={{ color: 'var(--text-secondary)', textDecoration: 'none' }}>Case Study</a>
-            <a href="#about" className="hover:opacity-80 transition-opacity" style={{ color: 'var(--text-secondary)', textDecoration: 'none' }}>About</a>
-            <a href="#contact" className="hover:opacity-80 transition-opacity" style={{ color: 'var(--text-secondary)', textDecoration: 'none' }}>Contact</a>
+
+          {/* Desktop Navigation */}
+          <div className="hidden md:flex gap-8 text-sm" style={{ color: 'var(--text-secondary)' }}>
+            {navLinks.map((link) => (
+              <a
+                key={link.href}
+                href={link.href}
+                className="hover:opacity-80 transition-opacity"
+                style={{ color: 'var(--text-secondary)', textDecoration: 'none' }}
+              >
+                {link.label}
+              </a>
+            ))}
           </div>
+
+          {/* Mobile Menu Button */}
+          <button
+            className="md:hidden p-2 -mr-2"
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            aria-label={mobileMenuOpen ? 'Close menu' : 'Open menu'}
+            aria-expanded={mobileMenuOpen}
+          >
+            {mobileMenuOpen ? (
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M18 6 6 18"/><path d="m6 6 12 12"/>
+              </svg>
+            ) : (
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/>
+              </svg>
+            )}
+          </button>
         </div>
+
+        {/* Mobile Menu Panel */}
+        {mobileMenuOpen && (
+          <div
+            className="md:hidden border-t"
+            style={{ backgroundColor: 'var(--bg-page)', borderColor: 'var(--sand)' }}
+          >
+            <div className="px-6 py-4 flex flex-col gap-4">
+              {navLinks.map((link) => (
+                <a
+                  key={link.href}
+                  href={link.href}
+                  className="text-lg py-2 hover:opacity-80 transition-opacity"
+                  style={{ color: 'var(--text-secondary)', textDecoration: 'none' }}
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  {link.label}
+                </a>
+              ))}
+            </div>
+          </div>
+        )}
       </nav>
 
       {/* Hero Section */}
@@ -399,51 +455,65 @@ export default function App() {
                   <p className="text-sm" style={{ color: 'var(--text-secondary)' }}>We'll be in touch within 24 hours.</p>
                 </div>
               ) : (
-                <div className="space-y-4">
-                  <input
-                    type="text"
-                    placeholder="Name"
-                    value={formData.name}
-                    onChange={(e) => setFormData({...formData, name: e.target.value})}
-                    className="w-full px-4 py-3 rounded-lg border transition-colors focus:outline-none"
-                    style={{
-                      backgroundColor: 'var(--bg-surface)',
-                      borderColor: 'var(--sand)',
-                      color: 'var(--text-primary)'
-                    }}
-                  />
-                  <input
-                    type="email"
-                    placeholder="Email"
-                    value={formData.email}
-                    onChange={(e) => setFormData({...formData, email: e.target.value})}
-                    className="w-full px-4 py-3 rounded-lg border transition-colors focus:outline-none"
-                    style={{
-                      backgroundColor: 'var(--bg-surface)',
-                      borderColor: 'var(--sand)',
-                      color: 'var(--text-primary)'
-                    }}
-                  />
-                  <textarea
-                    placeholder="Tell us about your AI adoption challenges"
-                    rows={4}
-                    value={formData.message}
-                    onChange={(e) => setFormData({...formData, message: e.target.value})}
-                    className="w-full px-4 py-3 rounded-lg border transition-colors focus:outline-none resize-none"
-                    style={{
-                      backgroundColor: 'var(--bg-surface)',
-                      borderColor: 'var(--sand)',
-                      color: 'var(--text-primary)'
-                    }}
-                  />
+                <form className="space-y-4" onSubmit={(e) => { e.preventDefault(); handleSubmit(); }}>
+                  <div>
+                    <label htmlFor="contact-name" className="sr-only">Name</label>
+                    <input
+                      id="contact-name"
+                      type="text"
+                      placeholder="Name"
+                      required
+                      value={formData.name}
+                      onChange={(e) => setFormData({...formData, name: e.target.value})}
+                      className="w-full px-4 py-3 rounded-lg border transition-colors focus:outline-none"
+                      style={{
+                        backgroundColor: 'var(--bg-surface)',
+                        borderColor: 'var(--sand)',
+                        color: 'var(--text-primary)'
+                      }}
+                    />
+                  </div>
+                  <div>
+                    <label htmlFor="contact-email" className="sr-only">Email</label>
+                    <input
+                      id="contact-email"
+                      type="email"
+                      placeholder="Email"
+                      required
+                      value={formData.email}
+                      onChange={(e) => setFormData({...formData, email: e.target.value})}
+                      className="w-full px-4 py-3 rounded-lg border transition-colors focus:outline-none"
+                      style={{
+                        backgroundColor: 'var(--bg-surface)',
+                        borderColor: 'var(--sand)',
+                        color: 'var(--text-primary)'
+                      }}
+                    />
+                  </div>
+                  <div>
+                    <label htmlFor="contact-message" className="sr-only">Message</label>
+                    <textarea
+                      id="contact-message"
+                      placeholder="Tell us about your AI adoption challenges"
+                      rows={4}
+                      value={formData.message}
+                      onChange={(e) => setFormData({...formData, message: e.target.value})}
+                      className="w-full px-4 py-3 rounded-lg border transition-colors focus:outline-none resize-none"
+                      style={{
+                        backgroundColor: 'var(--bg-surface)',
+                        borderColor: 'var(--sand)',
+                        color: 'var(--text-primary)'
+                      }}
+                    />
+                  </div>
                   <button
-                    onClick={handleSubmit}
+                    type="submit"
                     className="w-full py-3 rounded-lg font-medium transition-all hover:opacity-90"
                     style={{ backgroundColor: 'var(--terracotta)', color: 'white' }}
                   >
                     Book a Discovery Call
                   </button>
-                </div>
+                </form>
               )}
             </div>
           </div>
