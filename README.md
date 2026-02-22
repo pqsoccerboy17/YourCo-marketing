@@ -1,4 +1,4 @@
-# [YourCo] Consulting Website
+# Mycel Website
 
 AI GTM strategy consulting for PE-backed companies. We help turn AI tool sprawl into investor-ready adoption stories.
 
@@ -6,8 +6,8 @@ AI GTM strategy consulting for PE-backed companies. We help turn AI tool sprawl 
 
 - **Framework:** React 19 + Vite 7
 - **Styling:** Tailwind CSS 4
-- **Typography:** DM Sans (Google Fonts)
-- **Theme:** Light/Dark mode (system preference)
+- **Typography:** System font stack (no external fonts)
+- **Theme:** Light/Dark mode (toggle with `data-theme="dark"`)
 
 ## Development
 
@@ -33,16 +33,15 @@ npm run preview
 | `npm run build` | Build for production |
 | `npm run preview` | Preview production build |
 | `npm run lint` | Run ESLint |
-| `npm run setup:notion` | Create Notion activity database |
 
 ## Brand System
 
 Colors, typography, and component specifications are documented in [CLAUDE.md](CLAUDE.md).
 
 ### Key Colors
-- **Terracotta:** `#C4765B` (primary accent)
-- **Text Primary:** `#2D2A26` (warm charcoal)
-- **Background:** `#FAF9F7` (warm white)
+- **Amber:** `#d97706` (primary accent)
+- **Text Primary:** `#1c1917` (Stone 900)
+- **Background:** `#fafaf9` (Stone 50)
 
 ### Typography
 - **H1:** 56px / 40px mobile
@@ -54,14 +53,13 @@ Colors, typography, and component specifications are documented in [CLAUDE.md](C
 ```
 src/
 ├── App.jsx          # Main application component
-├── index.css        # Global styles + brand system
+├── index.css        # Global styles + Mycel design tokens
 └── main.jsx         # React entry point
-scripts/
-└── setup-notion.js  # Notion database setup
+public/
+└── favicon.svg      # Mycel branching node favicon
 ```
 
 ## Related Resources
 
 - **Handoff Doc:** `CLAUDE_CODE_HANDOFF.md` in Downloads
-- **Notion Hub:** https://www.notion.so/2da9df26e0408119ad22ee878e8d9e0c
-- **GitHub:** https://github.com/pqsoccerboy17/YourCo
+- **GitHub:** https://github.com/pqsoccerboy17/mycel-website
