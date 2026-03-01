@@ -6,4 +6,9 @@ import tailwindcss from '@tailwindcss/vite'
 export default defineConfig({
   base: '/YourCo-marketing/',
   plugins: [react(), tailwindcss()],
+  test: {
+    environment: 'jsdom',
+    globals: true,
+    setupFiles: './src/test/setup.js',
+  },
 })
